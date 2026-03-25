@@ -3,8 +3,7 @@
 A movie ticket booking web application.
 
 ## Tech Stack
-- React (Vite)
-- Tailwind CSS
+MERN
 
 ## Project Structure
 - client → frontend
