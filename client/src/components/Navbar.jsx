@@ -15,7 +15,7 @@ const navigate = useNavigate()
 
 
   return (
-    <div className='fixed top-0 left-0 z-50 w-full flex items-center justify-between px-6 md:px-16 lg:px-36 py-5'>
+    <div className='fixed top-0 left-0 z-50 w-full bg-slate-900/100 flex items-center justify-between px-6 md:px-16 lg:px-36 py-5'>
       <Link to='/' className='max-md:flex-1'>
         <img src={assets.logo} alt="" className='w-36 h-auto' />
       </Link>
@@ -28,11 +28,11 @@ const navigate = useNavigate()
 
         <XIcon className='md:hidden absolute top-6 right-6 w-6 h-6 cursor-pointer' onClick={()=> setIsOpen(!isOpen)}/>
 
-        <Link onClick={()=> {scrollTo(0,0), setIsOpen(false)}} to='/'>Home</Link>
-        <Link onClick={()=> {scrollTo(0,0), setIsOpen(false)}} to='/movies'>Movies</Link>
-        <Link onClick={()=> {scrollTo(0,0), setIsOpen(false)}} to='/'>Theaters</Link>
-        <Link onClick={()=> {scrollTo(0,0), setIsOpen(false)}} to='/'>Releases</Link>
-        <Link onClick={()=> {scrollTo(0,0), setIsOpen(false)}} to='/favorite'>Favorites</Link>
+        <Link onClick={()=> {scrollTo(0,0); setIsOpen(false)}} to='/'>Home</Link>
+        <Link onClick={()=> {scrollTo(0,0); setIsOpen(false)}} to='/movies'>Movies</Link>
+        <Link onClick={()=> {scrollTo(0,0); setIsOpen(false)}} to='/'>Theaters</Link>
+        <Link onClick={()=> {scrollTo(0,0); setIsOpen(false)}} to='/'>Releases</Link>
+        <Link onClick={()=> {scrollTo(0,0); setIsOpen(false)}} to='/favorite'>Favorites</Link>
       </div>
 
       <div className='flex items-center gap-8'>
