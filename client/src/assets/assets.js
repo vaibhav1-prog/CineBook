@@ -15,23 +15,31 @@ export const assets = {
 }
 
 export const dummyTrailers = [
-    {
-        image: "https://img.youtube.com/vi/WpW36ldAqnM/maxresdefault.jpg",
-        videoUrl: 'https://www.youtube.com/watch?v=WpW36ldAqnM'
-    },
-    {
-        image: "https://img.youtube.com/vi/-sAOWhvheK8/maxresdefault.jpg",
-        videoUrl: 'https://www.youtube.com/watch?v=-sAOWhvheK8'
-    },
-    {
-        image: "https://img.youtube.com/vi/1pHDWnXmK7Y/maxresdefault.jpg",
-        videoUrl: 'https://www.youtube.com/watch?v=1pHDWnXmK7Y'
-    },
-    {
-        image: "https://img.youtube.com/vi/umiKiW4En9g/maxresdefault.jpg",
-        videoUrl: 'https://www.youtube.com/watch?v=umiKiW4En9g'
-    },
-]
+  {
+    id: 1,
+    title: "Deadpool & Wolverine",
+    image: "https://img.youtube.com/vi/73_1biulkYk/hqdefault.jpg",
+    videoUrl: 'https://www.youtube.com/watch?v=73_1biulkYk'
+  },
+  {
+    id: 2,
+    title: "Avengers: Endgame",
+    image: "https://img.youtube.com/vi/TcMBFSGVi1c/hqdefault.jpg",
+    videoUrl: 'https://www.youtube.com/watch?v=TcMBFSGVi1c'
+  },
+  {
+    id: 3,
+    title: "Spider-Man: No Way Home",
+    image: "https://img.youtube.com/vi/JfVOs4VSpmA/hqdefault.jpg",
+    videoUrl: 'https://www.youtube.com/watch?v=JfVOs4VSpmA'
+  },
+  {
+    id: 4,
+    title: "Dune: Part Two",
+    image: "https://img.youtube.com/vi/Way9Dexny3w/hqdefault.jpg",
+    videoUrl: 'https://www.youtube.com/watch?v=Way9Dexny3w'
+  }
+];
 
 const dummyCastsData = [
     { "name": "Milla Jovovich", "profile_path": "https://image.tmdb.org/t/p/original/usWnHCzbADijULREZYSJ0qfM00y.jpg", },
