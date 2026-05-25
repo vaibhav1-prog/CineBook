@@ -1,7 +1,8 @@
 import { ChartLineIcon, CircleDollarSignIcon, PlayCircleIcon, UsersIcon } from 'lucide-react';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { dummyDashboardData } from '../../assets/assets';
 import Loading from '../../components/Loading';
+import Title from '../../components/admin/Title';
 
 const Dashboard = () => {
 
@@ -43,12 +44,13 @@ const fetchDashboardData = async () => {
 
 useEffect(() => {
   fetchDashboardData();
+
 }, []);
 
   return ! loading ? (
-  <div>
-
-  </div>
+  <>
+    <Title text1="Admin" text2="Dashboard" />
+  </>
 ) : <Loading />
 }
 
