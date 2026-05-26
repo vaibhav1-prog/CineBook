@@ -38,8 +38,7 @@ const adminNavLinks = [
                   <>
                     <link.icon className="w-5 h-5" />
                     <p className="max-md:hidden">{link.name}</p>
-                    <span className={`w-1.5 h-10 rounded-l right-0 absolute $
-                    {isActive && 'bg-primary'}`}/>
+                    <span className={`w-1.5 h-10 rounded-l right-0 absolute ${isActive ? 'bg-primary' : ''}`}/>
                   </>
                 )}
       </NavLink>

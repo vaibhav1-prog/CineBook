@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { assets, dummyDateTimeData, dummyShowsData } from '../assets/assets'
 import Loading from '../components/Loading'
-import { ArrowRightFromLineIcon, ArrowRightIcon, ClockIcon } from 'lucide-react'
+import { ArrowRightIcon, ClockIcon } from 'lucide-react'
 import isoTimeFormat from '../lib/isoTimeFormat'
 import BlurCircle from '../components/BlurCircle'
 import toast from 'react-hot-toast'
@@ -15,19 +15,12 @@ const SeatLayout = () => {
     const {id, date } = useParams()
     const [selectedSeats, setSelectedSeats] = useState([])
     const [selectedTime, setSelectedTime] = useState(null)
-    const [show, setShow] = useState(null)
-
     const navigate = useNavigate()
 
-    const getShow = async () => {
-      const show = dummyShowsData.find(show => show._id === id)
-      if(show){
-        setShow({
-          movie: show,
-          dateTime: dummyDateTimeData
-        })
-      }
-    }
+    const show = useMemo(() => {
+      const movie = dummyShowsData.find(show => show._id === id)
+      return movie ? { movie, dateTime: dummyDateTimeData } : null
+    }, [id])
 
     const handleSeatClick = (seatId) =>{
       if(!selectedTime) {
@@ -45,8 +38,7 @@ const SeatLayout = () => {
           {Array.from({ length: count }, (_, i) => {
             const seatId = `${row}${i + 1}`;
             return (
-              <button key={seatId} onClick={() => handleSeatClick
-                (seatId)} className={`h-8 w-8 rounded border border-primary/60
+              <button key={seatId} onClick={() => handleSeatClick(seatId)} className={`h-8 w-8 rounded border border-primary/60
                    cursor-pointer ${selectedSeats.includes(seatId) && 
                     "bg-primary text-white"}`}>
                       {seatId}
@@ -57,11 +49,6 @@ const SeatLayout = () => {
         </div>
       </div>
     )
-
-    useEffect(()=>{
-      getShow()
-    },[])
-
 
   return show ?(
     <div className='flex flex-col md:flex-row px-6 md:px-16 lg:px-40 py-30 
@@ -103,7 +90,7 @@ const SeatLayout = () => {
        </div>
        </div>
 
-       <button onClick={()=> navigate('my-bookings')} className='flex items-center gap-1 mt-20 px-10 py-3 text-sm
+       <button onClick={()=> navigate('/my-bookings')} className='flex items-center gap-1 mt-20 px-10 py-3 text-sm
        bg-primary hover:bg-primary-dull transition rounded-full font-medium
        cursor-pointer active:scale-95'>
         Proceed to checkout

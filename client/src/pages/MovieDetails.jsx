@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useMemo } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { dummyDateTimeData, dummyShowsData } from '../assets/assets'
 import BlurCircle from '../components/BlurCircle'
@@ -11,21 +11,10 @@ import Loading from '../components/Loading'
 const MovieDetails = () => {
   const navigate = useNavigate()
   const {id} = useParams()
-  const[show, setShow] = useState(null)
-
-  const getShow = async ()=>{
-    const show = dummyShowsData.find(show => show._id === id)
-    if(show){
-     setShow({
-      movie: show,
-      dateTime: dummyDateTimeData
-      })
-    }
-  } 
-  
-  useEffect(()=>{
-    getShow()
-  },[id])
+  const show = useMemo(() => {
+    const movie = dummyShowsData.find(show => show._id === id)
+    return movie ? { movie, dateTime: dummyDateTimeData } : null
+  }, [id])
 
   return show ? (
     <div className='px-6 md:px-16 lg:px-40 pt-30 md:pt-50'>

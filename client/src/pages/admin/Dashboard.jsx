@@ -1,21 +1,12 @@
 import { ChartLineIcon, CircleDollarSignIcon, PlayCircleIcon, UsersIcon } from 'lucide-react';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { dummyDashboardData } from '../../assets/assets';
-import Loading from '../../components/Loading';
 import Title from '../../components/admin/Title';
 
 const Dashboard = () => {
 
     const currency = import.meta.env.VITE_CURRENCY
-
-    const [dashboardData, setDashboardData] = useState({
-      totalBookings: 0,
-      totalRevenue: 0,
-      activeShows: [],
-      totalUser: 0
-    });
-
-const [loading, setLoading] = useState(true);
+    const dashboardData = dummyDashboardData
 
 const dashboardCards = [
   {
@@ -25,7 +16,7 @@ const dashboardCards = [
   },
 
   {
-    title: "Total Revenue",value: dashboardData.totalRevenue || "0",icon: CircleDollarSignIcon
+    title: "Total Revenue", value: `${currency}${dashboardData.totalRevenue || "0"}`, icon: CircleDollarSignIcon
   },
 
   {
@@ -37,21 +28,22 @@ const dashboardCards = [
   }
 ]
 
-const fetchDashboardData = async () => {
-  setDashboardData(dummyDashboardData)
-  setLoading(false)
-};
-
-useEffect(() => {
-  fetchDashboardData();
-
-}, []);
-
-  return ! loading ? (
+  return (
   <>
     <Title text1="Admin" text2="Dashboard" />
+    <div className="relative flex flex-wrap gap-4 mt-6">
+      {dashboardCards.map((card) => (
+        <div key={card.title} className="flex items-center justify-between px-4 py-5 min-w-52 rounded-md border border-primary/20 bg-primary/10">
+          <div>
+            <p className="text-sm text-gray-400">{card.title}</p>
+            <p className="text-xl font-semibold mt-1">{card.value}</p>
+          </div>
+          <card.icon className="w-8 h-8 text-primary" />
+        </div>
+      ))}
+    </div>
   </>
-) : <Loading />
+)
 }
 
 export default Dashboard
